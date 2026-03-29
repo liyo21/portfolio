@@ -43,17 +43,17 @@
   --z-index-2: 2;
   --z-index-999: 999;
 
-  --color-primary: #2f73f2;
-  --color-secondary: #547593;
-  --color-midnight_text: #102d47;
-  --color-grey: #668199;
-  --color-border: #ccd7e1;
-  --color-success: #3cd278;
-  --color-section: #f8fafc;
-  --color-darkmode: #081738;
-  --color-darklight: #000f30;
-  --color-dark_border: #224767;
-  --color-Sky-blue-mist: #c0d5fb;
+  --color-primary: #1a6338;
+  --color-secondary: #4d7a60;
+  --color-midnight_text: #0c2013;
+  --color-grey: #526b5a;
+  --color-border: #c8ddd0;
+  --color-success: #22c55e;
+  --color-section: #f3faf5;
+  --color-darkmode: #011b0c;
+  --color-darklight: #040f07;
+  --color-dark_border: #1b4228;
+  --color-Sky-blue-mist: #c4e0cc;
 
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
   --background-image-gradient-conic: conic-gradient(
