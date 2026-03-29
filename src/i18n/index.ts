@@ -22,6 +22,14 @@ const messages = {
             cta: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            form: {
+                title: 'Lorem ipsum',
+                name: 'Nombre',
+                lastName: 'Apellido',
+                email: 'Tu correo electrónico',
+                message: 'Mensaje',
+                button: 'Enviar mensaje',
+            }
         },
         footer: {
             title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
