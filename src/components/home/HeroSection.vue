@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="relative overflow-hidden bg-white pt-28 dark:bg-darklight md:pt-44 h-screen flex items-center">
+    <section class="relative overflow-hidden bg-white pt-28 dark:bg-darklight md:pt-44 min-h-screen flex items-start md:items-center">
         <vue-particles
             id="tsparticles-hero"
             class="absolute inset-0 z-0 pointer-events-none"
