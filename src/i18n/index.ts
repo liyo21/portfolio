@@ -9,19 +9,19 @@ const messages = {
             buttonSecondary: 'Descargar CV'
         },
         services: {
-            cta: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            cta: 'Empresas en las que he trabajado',
+            title: 'Eliyonai Molero - Desarrollador Fullstack',
+            subtitle: 'Desarrollador Full Stack con más de 6 años de experiencia en el diseño, desarrollo e implementación de soluciones web robustas, escalables y eficientes. He trabajado tanto en frontend como en backend, participando en proyectos desde cero y colaborando en equipos multidisciplinarios bajo metodologías ágiles como SCRUM.',
         },
-        blog: {
-            cta: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        projects: {
+            cta: 'Proyectos',
+            title: 'Proyectos destacados',
+            subtitle: 'A lo largo de mi carrera, he tenido la oportunidad de trabajar en una variedad de proyectos que han abarcado desde aplicaciones web para el sector público hasta soluciones financieras para empresas privadas. Mi enfoque siempre ha sido crear productos que no solo cumplan con los requisitos técnicos, sino que también ofrezcan una experiencia de usuario excepcional y un rendimiento óptimo.',
         },
         contact: {
-            cta: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            cta: 'Contacto',
+            title: '¿Tienes algún proyecto en mente? ¡Hablemos!',
+            subtitle: 'Estoy abierto a nuevas oportunidades y colaboraciones. Si estás interesado en trabajar conmigo o simplemente quieres saludar, no dudes en contactarme a través del formulario o por mis redes sociales.',
             form: {
                 title: 'Lorem ipsum',
                 name: 'Nombre',
@@ -32,16 +32,16 @@ const messages = {
             }
         },
         footer: {
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            title: '¿Tienes algún proyecto en mente? ¡Hablemos!',
             directContact: {
                 title: 'Contacto directo',
-                subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                subtitle: 'Estoy abierto a nuevas oportunidades y colaboraciones. Si estás interesado en trabajar conmigo o simplemente quieres saludar, no dudes en contactarme a través del formulario o por mis redes sociales.',
                 email: 'example@example.com',
                 phone: '+123 456 7890',
                 rrss: {
                     x: 'https://x.com',
-                    linkedin: 'https://linkedin.com',
-                    github: 'https://github.com',
+                    linkedin: 'https://www.linkedin.com/in/molero-eliyonai/',
+                    github: 'https://github.com/liyo21',
                 }
             },
             text: `© ${new Date().getFullYear()} Dev Eliyonai Molero. Todos los derechos reservados.`

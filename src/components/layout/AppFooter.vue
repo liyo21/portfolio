@@ -27,8 +27,13 @@ onMounted(() => {
                     class="md:col-span-6 sm:col-span-6 col-span-12 sm:border-r border-b border-solid border-dark_border flex items-center sm:border-b-0 sm:min-h-25 py-10 shrink-0">
                     <div class="sm:content-normal sm:text-start text-center content-center sm:w-auto w-full">
                         <router-link to="/" class="md:block flex justify-center">
-                            <img :src="getImgPath('/images/logo/logo-white.svg')" alt="logo" width="160" height="50"
-                                style="width: auto; height: auto" />
+                            <img 
+                                :src="getImgPath('/images/logo/logo-white.svg')" 
+                                alt="logo" 
+                                width="160" 
+                                height="50"
+                                class="w-100 h-auto"
+                            />
                         </router-link>
                         <h2 class="text-white py-10 text-2xl sm:text-3xl md:text-[40px] leading-tight font-bold">
                             {{ t('footer.title') }}

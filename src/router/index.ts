@@ -12,10 +12,10 @@ const routes = [
         }
     },
     {
-        path: '/blog/:slug',
-        name: 'blog-detail',
+        path: '/project/:slug',
+        name: 'project-detail',
         meta: {
-            title: 'Dr. Gutierrez - Artículo del Blog',
+            title: 'Dev Eliyonai Molero | Project',
         },
         component: BlogPostView
     }

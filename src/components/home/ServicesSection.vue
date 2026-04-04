@@ -9,13 +9,6 @@ const { t } = useI18n();
 <template>
     <section class="bg-section dark:bg-darklight" id="services">
         <div class="container mx-auto max-w-6xl px-4">
-            <div class="flex gap-2 items-center justify-center" data-aos="fade-up" data-aos-delay="200"
-                data-aos-duration="1000">
-                <span class="w-3 h-3 rounded-full bg-success"></span>
-                <span class="font-medium text-midnight_text text-sm dark:text-white/50">
-                    {{ t('services.cta') }}
-                </span>
-            </div>
 
             <h2 class="text-xl sm:text-2xl md:text-4xl leading-tight font-bold text-midnight_text md:text-center text-start pt-7 pb-20 md:w-4/6 w-full m-auto dark:text-white"
                 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
@@ -27,12 +20,28 @@ const { t } = useI18n();
                 {{ t('services.subtitle') }}
             </p>
 
-            <div class="grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7">
+            <div 
+                class="flex gap-2 items-center justify-center" 
+                data-aos="fade-up" 
+                data-aos-delay="200"
+                data-aos-duration="1000"
+                >
+                <span class="w-3 h-3 rounded-full bg-success"></span>
+                <span
+                    class="font-medium text-midnight_text text-sm dark:text-white/50">
+                    {{ t('services.cta') }}
+                </span>
+            </div>
+
+            <div class="grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7 mt-4">
                 <div v-for="(item, index) in Servicebox" :key="index"
-                    class="col-span-4 min-w-0 bg-white flex flex-col justify-between items-center text-center py-14 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode"
+                    class="col-span-4 min-w-0 bg-white flex flex-col justify-between items-center text-center py-14 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode "
                     data-aos="fade-up" :data-aos-delay="`${index * 200}`" data-aos-duration="1000"
-                    data-aos-offset="300">
-                    <img :src="item.icon" alt="Service Box" class="w-10 h-10 bg-no-repeat inline-block bg-contain" />
+                    data-aos-offset="300"
+                >
+                    <div class="dark:bg-white w-60 h-60 rounded-full flex items-center justify-center">
+                        <img :src="item.icon" alt="Service Box" class="w-40 h-40 bg-no-repeat inline-block bg-contain" />
+                    </div>
                     <h3 class="max-w-44 mx-auto text-2xl font-bold dark:text-white">
                         {{ item.title }}
                     </h3>

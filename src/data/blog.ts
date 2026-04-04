@@ -10,16 +10,16 @@ export type BlogPost = {
   content: string
 }
 
-export const blogPosts: BlogPost[] = [
+export const projectsPosts: BlogPost[] = [
   {
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    slug: 'deteccion-temprana-del-cancer',
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Encriptación de datos en aplicaciones web",
+    slug: "encriptacion-datos-aplicaciones-web",
+    excerpt: "Implementación de encriptación de datos sensibles utilizando AWS KMS en aplicaciones web, garantizando la seguridad y confidencialidad de la información almacenada y transmitida.",
     date: "21-03-2026",
-    coverImage: "/images/blog/blog_1.png",
+    coverImage: "/images/projects/aws-kms.PNG",
     author: 'Dev Eliyonai Molero',
     authorImage: '/images/blogdetail-page/silicaman.png',
-    category: "Lorem",
+    category: "AWS",
     content: `
       <h2 class="text-2xl font-bold text-midnight_text dark:text-white">Lorem ipsum dolor sit amet</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
@@ -41,14 +41,14 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    title: "Sed ut perspiciatis unde omnis iste natus error",
-    slug: 'opciones-de-tratamiento-oncologico',
-    excerpt: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+    title: "Migración de Webpack a Vite: Mejorando el rendimiento y la experiencia de desarrollo",
+    slug: "migracion-webpack-vite",
+    excerpt: "Migración del portal ChileAtiende desde Webpack a Vite, logrando una mejora significativa en los tiempos de construcción y recarga en caliente, lo que resultó en una experiencia de desarrollo más fluida y eficiente.",
     date: "21-03-2026",
-    coverImage: "/images/blog/blog_2.jpg",
+    coverImage: "/images/projects/webpack-vite.PNG",
     author: 'Dev Eliyonai Molero',
     authorImage: '/images/blogdetail-page/silicaman.png',
-    category: "Ipsum",
+    category: "Vite",
     content: `
       <h2 class="text-2xl font-bold text-midnight_text dark:text-white">Nemo enim ipsam voluptatem</h2>
       <p>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
@@ -74,14 +74,14 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    title: "At vero eos et accusamus et iusto odio dignissimos",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "QuickCheckout",
+    excerpt: "Formulario de pago renderiable en cualquier plataforma, con validaciones en tiempo real y optimizado para conversiones.",
     date: "21-03-2026",
-    coverImage: "/images/blog/blog_3.png",
-    slug: "acompanamiento-al-paciente-con-cancer",
+    coverImage: "/images/projects/quick-checkout.PNG",
+    slug: "quickcheckout",
     author: 'Dev Eliyonai Molero',
     authorImage: '/images/blogdetail-page/silicaman.png',
-    category: "Dolor",
+    category: "Payments",
     content: `
       <h2 class="text-2xl font-bold text-midnight_text dark:text-white">Lorem ipsum quia dolor sit amet</h2>
       <p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
@@ -104,6 +104,6 @@ export const blogPosts: BlogPost[] = [
   },
 ]
 
-export function getBlogPostBySlug(slug: string) {
-  return blogPosts.find((post) => post.slug === slug)
+export function getProjectBySlug(slug: string) {
+  return projectsPosts.find((post) => post.slug === slug)
 }
