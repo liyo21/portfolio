@@ -36,8 +36,8 @@ const messages = {
             directContact: {
                 title: 'Contacto directo',
                 subtitle: 'Estoy abierto a nuevas oportunidades y colaboraciones. Si estás interesado en trabajar conmigo o simplemente quieres saludar, no dudes en contactarme a través del formulario o por mis redes sociales.',
-                email: 'example@example.com',
-                phone: '+123 456 7890',
+                email: 'moleroeliyonai@gmail.com',
+                phone: '+56 9 6728 9355',
                 rrss: {
                     x: 'https://x.com',
                     linkedin: 'https://www.linkedin.com/in/molero-eliyonai/',

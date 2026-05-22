@@ -32,7 +32,6 @@ onMounted(() => {
                                 alt="logo" 
                                 width="160" 
                                 height="50"
-                                class="w-100 h-auto"
                             />
                         </router-link>
                         <h2 class="text-white py-10 text-2xl sm:text-3xl md:text-[40px] leading-tight font-bold">

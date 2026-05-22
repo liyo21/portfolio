@@ -49,11 +49,6 @@ const isHome = computed(() => route.path === '/')
         <div class="container mx-auto max-w-6xl flex items-center justify-between p-6">
             <AppLogo />
 
-            <!-- Desktop Nav -->
-            <nav class="hidden lg:flex grow items-center justify-center gap-6">
-                <HeaderLink v-for="(item, index) in headerData" :key="index" :item="item" />
-            </nav>
-
             <div class="flex items-center gap-4">
                 <!-- Theme Toggle -->
                 <button aria-label="Toggle theme"
@@ -72,14 +67,6 @@ const isHome = computed(() => route.path === '/')
                         <path
                             d="M16.6111 15.855C17.591 15.1394 18.3151 14.1979 18.7723 13.1623C16.4824 13.4065 14.1342 12.4631 12.6795 10.4711C11.2248 8.47905 11.0409 5.95516 11.9705 3.84818C10.8449 3.9685 9.72768 4.37162 8.74781 5.08719C5.7759 7.25747 5.12529 11.4308 7.29558 14.4028C9.46586 17.3747 13.6392 18.0253 16.6111 15.855Z" />
                     </svg>
-                </button>
-
-                <!-- Mobile hamburger -->
-                <button class="block lg:hidden p-2 rounded-lg" aria-label="Toggle mobile menu"
-                    @click="navbarOpen = !navbarOpen">
-                    <span class="block w-6 h-0.5 bg-black dark:bg-white"></span>
-                    <span class="block w-6 h-0.5 bg-black dark:bg-white mt-1.5"></span>
-                    <span class="block w-6 h-0.5 bg-black dark:bg-white mt-1.5"></span>
                 </button>
             </div>
         </div>
