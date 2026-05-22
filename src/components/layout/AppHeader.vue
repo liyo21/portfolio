@@ -3,10 +3,7 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
-import { headerData } from '@/data'
 import AppLogo from './AppLogo.vue'
-import HeaderLink from './HeaderLink.vue'
-import MobileHeaderLink from './MobileHeaderLink.vue'
 
 const route = useRoute()
 const { toggleTheme } = useTheme()
@@ -88,9 +85,6 @@ const isHome = computed(() => route.path === '/')
                     </svg>
                 </button>
             </div>
-            <nav class="flex flex-col items-start p-4">
-                <MobileHeaderLink v-for="(item, index) in headerData" :key="index" :item="item" />
-            </nav>
         </div>
     </header>
 </template>
