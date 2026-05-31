@@ -1,6 +1,6 @@
 <!-- src/views/BlogPostView.vue -->
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { format, parse } from 'date-fns'
 import { es } from 'date-fns/locale'
@@ -29,6 +29,28 @@ const formattedDate = computed(() => {
 if (!post.value) {
   router.replace('/404')
 }
+
+watchEffect(() => {
+  if (!post.value) return
+
+  document.title = post.value.title
+
+  const setMeta = (name: string, content: string, attr = 'name') => {
+    let el = document.querySelector(`meta[${attr}="${name}"]`)
+    if (!el) {
+      el = document.createElement('meta')
+      el.setAttribute(attr, name)
+      document.head.appendChild(el)
+    }
+    el.setAttribute('content', content)
+  }
+
+  setMeta('description', post.value.metaDescription)
+  setMeta('og:title', post.value.title, 'property')
+  setMeta('og:description', post.value.metaDescription, 'property')
+  setMeta('keywords', post.value.keyWords.join(', '))
+})
+
 </script>
 
 <template>
