@@ -1,8 +1,10 @@
 <!-- src/components/home/ContactSection.vue -->
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useForm, useField } from 'vee-validate';
 import { useI18n } from 'vue-i18n';
+import { useParticles } from '@/composables/useParticles';
+
 const { t } = useI18n();
 
 const { handleSubmit } = useForm();
@@ -30,8 +32,33 @@ const { value: message, errorMessage: messageError } = useField<string>('message
 });
 
 const isSubmitting = ref(false);
+const turnstileToken = ref('');
+const widgetId = ref<string | null>(null);
+const formSubmitAttempted = ref(false);
+
+const TURNSTILE_SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+
+const renderTurnstileWidget = () => {
+    widgetId.value = window.turnstile.render('#turnstile-container', {
+        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+        theme: 'auto',
+        callback: (token: string) => {
+            turnstileToken.value = token;
+        },
+        'expired-callback': () => {
+            turnstileToken.value = '';
+        },
+        'error-callback': () => {
+            turnstileToken.value = '';
+        },
+    });
+};
 
 const sendWhatsappMessage = handleSubmit(() => {
+    formSubmitAttempted.value = true;
+
+    if (!turnstileToken.value) return;
+
     try {
         isSubmitting.value = true;
 
@@ -44,6 +71,11 @@ const sendWhatsappMessage = handleSubmit(() => {
     } finally {
         isSubmitting.value = false;
     }
+
+    if (widgetId.value) {
+        window.turnstile?.reset(widgetId.value);
+    }
+    turnstileToken.value = '';
     resetFields();
 });
 
@@ -54,13 +86,26 @@ const resetFields = () => {
     message.value = '';
 };
 
-import { onMounted } from 'vue';
-import { useParticles } from '@/composables/useParticles';
-
 const { particlesOptions, particlesColor } = useParticles();
 
 onMounted(() => {
-    particlesColor.value = '#fff'; // Cambia el color de las partículas a blanco
+    particlesColor.value = '#fff';
+
+    if (!document.querySelector(`script[src="${TURNSTILE_SCRIPT_URL}"]`)) {
+        const script = document.createElement('script');
+        script.src = TURNSTILE_SCRIPT_URL;
+        script.async = true;
+        script.onload = renderTurnstileWidget;
+        document.head.appendChild(script);
+    } else if (window.turnstile) {
+        renderTurnstileWidget();
+    }
+});
+
+onUnmounted(() => {
+    if (widgetId.value) {
+        window.turnstile?.remove(widgetId.value);
+    }
 });
 
 </script>
@@ -133,9 +178,15 @@ onMounted(() => {
                                 <p v-if="messageError" class="text-red-500 text-xs mt-1">{{ messageError }}</p>
                             </div>
 
+                            <!-- Turnstile -->
+                            <div class="w-full">
+                                <div id="turnstile-container"></div>
+                                <p v-if="formSubmitAttempted && !turnstileToken" class="text-red-500 text-xs mt-1">{{ t('contact.form.turnstileError') }}</p>
+                            </div>
+
                             <div class="w-full">
                                 <button 
-                                    :disabled="isSubmitting"
+                                    :disabled="isSubmitting || !turnstileToken"
                                     class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg cursor-pointer font-semibold transition disabled:bg-primary/70 disabled:cursor-not-allowed"
                                     type="submit"
                                 >

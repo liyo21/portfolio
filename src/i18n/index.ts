@@ -29,6 +29,7 @@ const messages = {
                 email: 'Tu correo electrónico',
                 message: 'Mensaje',
                 button: 'Enviar mensaje',
+                turnstileError: 'Por favor, completa el desafío de verificación.',
             }
         },
         footer: {
