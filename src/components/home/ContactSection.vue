@@ -62,7 +62,7 @@ const sendWhatsappMessage = handleSubmit(() => {
     try {
         isSubmitting.value = true;
 
-        const fullMessage = `Hola Dr. José Gutiérrez, mi nombre es ${firstName.value} ${lastName.value}. Mi correo es ${email.value}. ${message.value}`;
+        const fullMessage = `Hola Eliyonai, mi nombre es ${firstName.value} ${lastName.value}. Mi correo es ${email.value}. ${message.value}`;
         const encodedMessage = encodeURIComponent(fullMessage);
         const whatsappUrl = `https://wa.me/56967289355?text=${encodedMessage}`;
         window.open(whatsappUrl, '_blank');
