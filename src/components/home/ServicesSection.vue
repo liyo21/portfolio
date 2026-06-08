@@ -1,6 +1,6 @@
 <!-- src/components/home/ServicesSection.vue -->
 <script setup lang="ts">
-import { Servicebox } from '@/data'
+import { Servicebox, Technologies } from '@/data'
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
@@ -19,13 +19,41 @@ const { t } = useI18n();
                 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                 {{ t('services.subtitle') }}
             </p>
-
+            
             <div 
                 class="flex gap-2 items-center justify-center" 
                 data-aos="fade-up" 
                 data-aos-delay="200"
                 data-aos-duration="1000"
+            >
+                <span class="w-3 h-3 rounded-full bg-success"></span>
+                <span
+                    class="font-medium text-midnight_text text-sm dark:text-white/50">
+                    Tecnologias
+                </span>
+            </div>
+
+            <div class="grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7 mt-4">
+                <div v-for="(item, index) in Technologies" :key="index"
+                    class="col-span-3 min-w-0 bg-white flex flex-col justify-between items-center text-center py-7 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode "
+                    data-aos="fade-up" :data-aos-delay="`${index * 200}`" data-aos-duration="1000"
+                    data-aos-offset="300"
                 >
+                    <div class="dark:bg-white w-40 h-40 rounded-full flex items-center justify-center">
+                        <img :src="item.icon" alt="Service Box" class="w-40 h-40 bg-no-repeat inline-block bg-contain" />
+                    </div>
+                    <h3 class="max-w-44 mx-auto text-2xl font-bold dark:text-white">
+                        {{ item.name }}
+                    </h3>
+                </div>
+            </div>
+
+            <div 
+                class="flex gap-2 items-center justify-center mt-16" 
+                data-aos="fade-up" 
+                data-aos-delay="200"
+                data-aos-duration="1000"
+            >
                 <span class="w-3 h-3 rounded-full bg-success"></span>
                 <span
                     class="font-medium text-midnight_text text-sm dark:text-white/50">

@@ -31,6 +31,106 @@ export const Servicebox = [
   },
 ];
 
+export const Technologies = [
+  {
+    name: "JavaScript",
+    icon: getImgPath("/images/technologies/javascript.svg"),
+  },
+  {
+    name: "TypeScript",
+    icon: getImgPath("/images/technologies/typescript.svg"),
+  },
+  {
+    name: "Vue.js",
+    icon: getImgPath("/images/technologies/vue.svg"),
+  },
+  {
+    name: "Nuxt.js",
+    icon: getImgPath("/images/technologies/nuxt.svg"),
+  },
+  {
+    name: "Unit Tests: Vitest",
+    icon: getImgPath("/images/technologies/vitest.svg"),
+  },
+  {
+    name: "E2E Tests: Cypress",
+    icon: getImgPath("/images/technologies/cypress.svg"),
+  },
+  {
+    name: "PHP",
+    icon: getImgPath("/images/technologies/php.svg"),
+  },
+  {
+    name: "Laravel",
+    icon: getImgPath("/images/technologies/laravel.svg"),
+  },
+  {
+    name: "Unit Tests: PHPUnit",
+    icon: getImgPath("/images/technologies/phpunit.svg"),
+  },
+  {
+    name: "E2E Tests: Laravel Dusk",
+    icon: getImgPath("/images/technologies/laravel-dusk.svg"),
+  },
+  {
+    name: "MySQL",
+    icon: getImgPath("/images/technologies/mysql.svg"),
+  },
+  {
+    name: "AWS",
+    icon: getImgPath("/images/technologies/aws.svg"),
+  },
+  {
+    name: "Docker",
+    icon: getImgPath("/images/technologies/docker.svg"),
+  },
+  {
+    name: "Git",
+    icon: getImgPath("/images/technologies/git.svg"),
+  },
+  {
+    name: "Gitlab",
+    icon: getImgPath("/images/technologies/gitlab.svg"),
+  },
+  {
+    name: "Github",
+    icon: getImgPath("/images/technologies/github.svg"),
+  },
+];
+
+export const certifications = [
+  {
+    name: "AWS Certified Cloud Practitioner",
+    icon: getImgPath("/images/certifications/aws-cloud-practitioner.png"),
+    link: "https://www.credly.com/badges/e9de1a06-9c75-46aa-b96c-07e44713179b/public_url",
+  },
+  {
+    name: "AWS Cloud Quest: Cloud Practitioner",
+    icon: getImgPath("/images/certifications/aws-cloud-quest-cloud-practitioner.png"),
+    link: "https://www.credly.com/badges/2c8e5f6d-7a8b-4f1e-9b3a-1b9c8e7c-5a0d/public_url",
+  },
+  {
+    name: "Cisco Introduction to Cybersecurity",
+    icon: getImgPath("/images/certifications/cisco-introduction-to-cybersecurity.png"),
+    link: "https://www.credly.com/badges/3a0d9e7c-5b0d-4f1e-9b3a-2c8e5f6d7a8b/public_url",
+  },
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    icon: getImgPath("/images/certifications/microsoft-azure-fundamentals.png"),
+    link: "https://www.credly.com/badges/4a0d9e7c-5b0d-4f1e-9b3a-2c8e5f6d7a8b/public_url",
+  },
+  {
+    name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+    icon: getImgPath("/images/certifications/microsoft-security-compliance-identity-fundamentals.png"),
+    link: "https://www.credly.com/badges/5a0d9e7c-5b0d-4f1e-9b3a-2c8e5f6d7a8b/public_url",
+  },
+  {
+    name: "Scrum Product Owner Professional (SPOPC)",
+    icon: getImgPath("/images/certifications/scrum-product-owner-professional.png"),
+    link: "https://www.credly.com/badges/6a0d9e7c-5b0d-4f1e-9b3a-2c8e5f6d7a8b/public_url",
+  },
+];
+
 export const projectsPost: Blog[] = [
   {
     title: "Encriptación de datos en aplicaciones web",
