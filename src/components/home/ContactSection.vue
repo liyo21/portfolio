@@ -124,7 +124,7 @@ onUnmounted(() => {
                     data-aos-delay="200" data-aos-duration="1000">
                     <div class="flex gap-2 items-center justify-start">
                         <span class="w-3 h-3 rounded-full bg-success"></span>
-                        <span class="font-medium text-sm text-white">{{ t('contact.cta') }}</span>
+                        <span class="font-medium text-lg text-white">{{ t('contact.cta') }}</span>
                     </div>
 
                     <h2 class="sm:text-4xl text-[28px] leading-tight font-bold text-white py-12">
@@ -147,14 +147,14 @@ onUnmounted(() => {
                                 <div class="w-full">
                                     <input
                                         v-model="firstName"
-                                        :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', firstNameError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
+                                        :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white dark:bg-white/90 px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', firstNameError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
                                         type="text" :placeholder="t('contact.form.name')" />
                                     <p v-if="firstNameError" class="text-red-500 text-xs mt-1">{{ firstNameError }}</p>
                                 </div>
                                 <div class="w-full">
                                     <input
                                         v-model="lastName"
-                                        :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', lastNameError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
+                                        :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white dark:bg-white/90 px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', lastNameError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
                                         type="text" :placeholder="t('contact.form.lastName')" />
                                     <p v-if="lastNameError" class="text-red-500 text-xs mt-1">{{ lastNameError }}</p>
                                 </div>
@@ -164,7 +164,7 @@ onUnmounted(() => {
                             <div class="w-full">
                                 <input
                                     v-model="email"
-                                    :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', emailError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
+                                    :class="['text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white dark:bg-white/90 px-[0.9375rem] py-[0.830rem] border border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', emailError ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary dark:border-dark_border dark:focus:border-primary']"
                                     type="email" :placeholder="t('contact.form.email')" />
                                 <p v-if="emailError" class="text-red-500 text-xs mt-1">{{ emailError }}</p>
                             </div>
@@ -173,7 +173,7 @@ onUnmounted(() => {
                             <div class="w-full">
                                 <textarea
                                     v-model="message"
-                                    :class="['text-midnight_text h-[9.375rem] w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] !border !border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', messageError ? '!border-red-500 focus:!border-red-500' : '!border-border focus:!border-primary dark:!border-dark_border dark:focus:!border-primary']"
+                                    :class="['text-midnight_text h-[9.375rem] w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white dark:bg-white/90 px-[0.9375rem] py-[0.830rem] !border !border-solid placeholder:text-grey rounded-lg focus-visible:outline-0', messageError ? '!border-red-500 focus:!border-red-500' : '!border-border focus:!border-primary dark:!border-dark_border dark:focus:!border-primary']"
                                     :placeholder="t('contact.form.message')"></textarea>
                                 <p v-if="messageError" class="text-red-500 text-xs mt-1">{{ messageError }}</p>
                             </div>

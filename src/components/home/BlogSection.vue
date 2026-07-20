@@ -1,13 +1,21 @@
 <!-- src/components/home/BlogSection.vue -->
 <script setup lang="ts">
-import { projectsPost } from '@/data';
+import { computed } from 'vue';
+import { getProjects, type BlogPost } from '@/data/blog';
 import { getImgPath } from '@/utils/image';
+import { formatProjectDate as formatLocalizedProjectDate } from '@/utils/date';
+import { normalizeLocale } from '@/utils/locale';
+import { useLanguage } from '@/composables/useLanguage';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
+const { locale } = useLanguage();
 
-const getCoverImage = (blog: any) => {
-  return blog.coverImage ? getImgPath(blog.coverImage) : '';
-};
+const currentLocale = computed(() => normalizeLocale(locale.value));
+const projectsPost = computed(() => getProjects(currentLocale.value));
+
+const getCoverImage = (blog: BlogPost) => getImgPath(blog.coverImage);
+const formatProjectDate = (date: string) =>
+  formatLocalizedProjectDate(date, currentLocale.value);
 
 </script>
 
@@ -17,7 +25,7 @@ const getCoverImage = (blog: any) => {
       <div class="mx-auto mb-14 max-w-3xl text-center">
         <div class="mb-4 flex items-center justify-center gap-2" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
           <span class="w-3 h-3 rounded-full bg-success"></span>
-          <span class="font-medium text-midnight_text text-sm dark:text-white/50">
+          <span class="font-medium text-midnight_text text-lg dark:text-white/80">
             {{ t('projects.cta') }}
           </span>
         </div>
@@ -61,7 +69,7 @@ const getCoverImage = (blog: any) => {
 
           <div class="flex flex-col justify-between gap-5 p-6 md:col-span-5 md:p-8">
             <div class="space-y-3">
-              <span class="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Artículo destacado</span>
+              <span class="text-sm font-semibold uppercase tracking-[0.14em] text-primary dark:text-white/80">{{ t('projects.featured') }}</span>
               <h3 class="text-2xl font-semibold leading-tight text-black dark:text-white md:text-[30px]">
                 <router-link :to="`/project/${projectsPost[0].slug}`" class="transition hover:text-primary dark:hover:text-primary">
                   {{ projectsPost[0].title }}
@@ -74,9 +82,9 @@ const getCoverImage = (blog: any) => {
 
             <router-link
               :to="`/project/${projectsPost[0].slug}`"
-              class="inline-flex w-fit items-center gap-2 text-base font-semibold text-primary transition hover:text-blue-700"
+              class="inline-flex w-fit items-center gap-2 text-base font-semibold text-primary transition hover:text-blue-700 dark:text-white/80 dark:hover:text-primary"
             >
-              Leer artículo
+              {{ t('projects.readArticle') }}
               <span aria-hidden="true">→</span>
             </router-link>
           </div>
@@ -123,14 +131,14 @@ const getCoverImage = (blog: any) => {
 
               <div class="mt-auto flex items-center justify-between gap-4 pt-2">
                 <span class="text-sm font-semibold leading-loose text-grey dark:text-white/50">
-                  {{ project.date }}
+                  {{ formatProjectDate(project.date) }}
                 </span>
 
                 <router-link
                   :to="`/project/${project.slug}`"
-                  class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-blue-700"
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-blue-700 dark:text-white/80 dark:hover:text-primary"
                 >
-                  Leer artículo
+                  {{ t('projects.readArticle') }}
                   <span aria-hidden="true">→</span>
                 </router-link>
               </div>

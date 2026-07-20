@@ -1,16 +1,19 @@
 <!-- src/components/layout/AppFooter.vue -->
 <script setup lang="ts">
 import { getImgPath } from '@/utils/image'
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
 import { useParticles } from '@/composables/useParticles';
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+const { t, tm } = useI18n();
 
 const { particlesOptions, particlesColor } = useParticles();
 
 onMounted(() => {
     particlesColor.value = '#fff'; // Cambia el color de las partículas a blanco
 });
+
+const bottomBarList = computed(() => tm('footer.list') as Array<{ title: string; to: string }>);
+
 </script>
 
 <template>
@@ -56,8 +59,8 @@ onMounted(() => {
                         </div>
                         <div class="sm:block flex items-center gap-3">
                             <p class="text-base font-bold text-white">Email</p>
-                            <a href="#" class="text-white/50 hover:text-white">
-                                example@example.com
+                            <a href="mailto:moleroeliyonai@gmail.com" class="text-white/50 hover:text-white">
+                                moleroeliyonai@gmail.com
                             </a>
                         </div>
                         <div>
@@ -124,17 +127,8 @@ onMounted(() => {
         <div class="text-center gap-4 md:gap-0 flex-wrap p-7 border-t border-solid border-dark_border">
             <div>
                 <ul class="flex justify-center mb-4 items-center sm:gap-7 gap-3">
-                    <li class="text-base text-white/50">
-                        <router-link to="/#services" class="hover:text-primary">Servicios</router-link>
-                    </li>
-                    <li class="text-base text-white/50">
-                        <router-link to="/#blog" class="hover:text-primary">Blog</router-link>
-                    </li>
-                    <li class="text-base text-white/50">
-                        <router-link to="/#contact" class="hover:text-primary">Contacto</router-link>
-                    </li>
-                    <li class="text-base text-white/50">
-                        <a href="#" class="hover:text-primary">Aviso de privacidad</a>
+                    <li v-for="(item, index) in bottomBarList" :key="index" class="text-base text-white/50">
+                        <router-link :to="item.to" class="hover:text-primary">{{ item.title }}</router-link>
                     </li>
                 </ul>
             </div>

@@ -105,3 +105,43 @@ Si estás buscando a alguien que pueda construir, optimizar y ordenar productos 
 ---
 
 Disponible para colaborar en proyectos en español o inglés.
+
+## Publicar un proyecto destacado
+
+Los proyectos se almacenan como Markdown localizado en `src/content/projects`.
+Cada proyecto debe tener una carpeta cuyo nombre coincida con `translationKey` y
+dos archivos de contenido:
+
+```text
+src/content/projects/<translationKey>/
+├── es.md
+└── en.md
+```
+
+Ambos archivos deben incluir el mismo `translationKey`, una fecha en formato
+`YYYY-MM-DD` y todos los campos del frontmatter:
+
+```md
+---
+translationKey: project-id
+locale: es
+slug: slug-localizado
+title: Título del proyecto
+excerpt: Resumen utilizado en la tarjeta.
+date: "2026-03-21"
+coverImage: /images/projects/cover.png
+author: Dev Eliyonai Molero
+category: Vue
+metaDescription: Descripción para buscadores y redes sociales.
+keywords:
+  - Vue
+  - TypeScript
+---
+
+## Introducción
+
+Contenido del proyecto en Markdown.
+```
+
+El build valida traducciones faltantes, locales o fechas inválidas, slugs
+duplicados y rutas que no coincidan con `translationKey`.

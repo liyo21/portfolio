@@ -1,15 +1,41 @@
 <!-- src/components/home/HeroSection.vue -->
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useParticles } from '@/composables/useParticles';
+import { useLanguage } from '@/composables/useLanguage';
+import { getImgPath } from '@/utils/image';
 import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
 const { t } = useI18n();
+const { locale } = useLanguage()
 
 const { particlesOptions, particlesColor } = useParticles();
+const isLoading = ref(false);
 
 onMounted(() => {
     particlesColor.value = "#2f6b4f"; // Color verde oscuro
 });
+
+const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = getImgPath(`/documents/cv-eliyonai-molero-${locale.value}.pdf`);
+    link.download = `cv-eliyonai-molero-${locale.value}.pdf`; // Nombre del archivo descargado
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+const downloadButtonText = computed(() => {
+    return isLoading.value ? t('hero.buttonSecondaryLoading') : t('hero.buttonSecondary');
+});
+
+const handleDownloadClick = () => {
+    isLoading.value = true;
+    downloadCV();
+    setTimeout(() => {
+        isLoading.value = false;
+    }, 2000);
+};
 
 </script>
 
@@ -42,9 +68,12 @@ onMounted(() => {
                         {{ t('hero.buttonPrimary') }}
                     </a>
 
-                    <a href="#contact"
-                        class="inline-flex w-full items-center justify-center rounded-md border border-border bg-white px-8 py-3 font-semibold text-midnight_text transition duration-300 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-transparent dark:text-white sm:w-auto">
-                        {{ t('hero.buttonSecondary') }}
+                    <a
+                        href=""
+                        class="inline-flex w-full items-center justify-center rounded-md border border-border bg-white px-8 py-3 font-semibold text-midnight_text transition duration-300 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white dark:text-primary sm:w-auto"
+                        @click.prevent="handleDownloadClick"
+                    >
+                        {{ downloadButtonText }}
                     </a>
                 </div>
             </div>

@@ -1,17 +1,19 @@
 <!-- src/components/home/BlogCard.vue -->
 <script setup lang="ts">
 import { computed } from 'vue'
-import { format } from 'date-fns'
-import { es } from 'date-fns/locale'
 import type { Blog } from '@/types/blog'
 import { getImgPath } from '@/utils/image'
+import { formatProjectDate } from '@/utils/date'
+import { normalizeLocale } from '@/utils/locale'
+import { useLanguage } from '@/composables/useLanguage'
 
 const props = defineProps<{ blog: Blog }>()
+const { locale } = useLanguage()
 
 const coverImage = computed(() => props.blog.coverImage || '')
 const blogTitle = computed(() => props.blog.title || 'Artículo del blog')
 const formattedDate = computed(() =>
-  format(new Date(props.blog.date), 'dd MMM yyyy', { locale: es })
+  formatProjectDate(props.blog.date, normalizeLocale(locale.value))
 )
 </script>
 

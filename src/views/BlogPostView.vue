@@ -2,28 +2,34 @@
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { format, parse } from 'date-fns'
-import { es } from 'date-fns/locale'
-import { projectsPosts, getProjectBySlug } from '@/data/blog'
+import { getProjectBySlug, getProjects } from '@/data/blog'
 import { getImgPath } from '@/utils/image'
+import { formatProjectDate } from '@/utils/date'
+import { normalizeLocale } from '@/utils/locale'
+import { useLanguage } from '@/composables/useLanguage'
+import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
 const router = useRouter()
+const { locale } = useLanguage()
+const { t } = useI18n()
+const currentLocale = computed(() => normalizeLocale(locale.value))
 
 const post = computed(() => {
   const slug = String(route.params.slug || '')
-  return getProjectBySlug(slug)
+  return getProjectBySlug(slug, currentLocale.value)
 })
 
 const relatedPosts = computed(() => {
   if (!post.value) return []
-  return projectsPosts.filter((item) => item.slug !== post.value?.slug).slice(0, 3)
+  return getProjects(currentLocale.value)
+    .filter((item) => item.id !== post.value?.id)
+    .slice(0, 3)
 })
 
 const formattedDate = computed(() => {
   if (!post.value) return ''
-  const parsedDate = parse(post.value.date, 'dd-MM-yyyy', new Date())
-  return format(parsedDate, "d 'de' MMMM, yyyy", { locale: es })
+  return formatProjectDate(post.value.date, currentLocale.value, 'long')
 })
 
 if (!post.value) {
@@ -48,7 +54,7 @@ watchEffect(() => {
   setMeta('description', post.value.metaDescription)
   setMeta('og:title', post.value.title, 'property')
   setMeta('og:description', post.value.metaDescription, 'property')
-  setMeta('keywords', post.value.keyWords.join(', '))
+  setMeta('keywords', post.value.keywords.join(', '))
 })
 
 </script>
@@ -57,7 +63,7 @@ watchEffect(() => {
   <main v-if="post" class="pt-20 pb-20 overflow-hidden bg-white dark:bg-darklight">
     <section class="container mx-auto max-w-6xl px-4">
       <div class="mb-8 flex flex-wrap items-center gap-3 text-sm font-semibold text-grey dark:text-white/55">
-        <router-link to="/#projects" class="transition hover:text-primary">Proyectos</router-link>
+        <router-link to="/#projects" class="transition hover:text-primary">{{ t('projects.breadcrumb') }}</router-link>
         <span>/</span>
         <span>{{ post.category }}</span>
       </div>
@@ -97,14 +103,14 @@ watchEffect(() => {
 
         <aside class="lg:col-span-4">
           <div class="sticky top-28 space-y-6">
-            <div class="rounded-2xl border border-border bg-white p-6 shadow-service dark:border-white/10 dark:bg-darkmode">
-              <h3 class="text-xl font-bold text-midnight_text dark:text-white">Lecturas relacionadas</h3>
+            <div class="rounded-2xl border border-border bg-white p-6 shadow-service dark:border-white/10 dark:bg-darklight">
+              <h3 class="text-xl font-bold text-midnight_text dark:text-white">{{ t('projects.related') }}</h3>
               <div class="mt-5 space-y-4">
                 <router-link
                   v-for="item in relatedPosts"
                   :key="item.slug"
                   :to="`/project/${item.slug}`"
-                  class="block rounded-xl border border-border p-4 transition hover:border-primary hover:shadow-md dark:border-white/10"
+                  class="block rounded-xl border border-border p-4 transition hover:border-primary hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-primary"
                 >
                   <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary">{{ item.category }}</p>
                   <p class="mt-2 text-base font-semibold leading-6 text-midnight_text transition hover:text-primary dark:text-white">
