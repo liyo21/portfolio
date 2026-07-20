@@ -1,8 +1,11 @@
 <!-- src/components/home/ServicesSection.vue -->
 <script setup lang="ts">
-import { Servicebox, Technologies } from '@/data'
+import { Technologies } from '@/data'
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+const { t, tm } = useI18n();
+
+const companiesList = computed(() => tm('services.companies') as Array<{ name: string; logo: string; url: string; description: string }>);
 
 </script>
 
@@ -28,18 +31,18 @@ const { t } = useI18n();
             >
                 <span class="w-3 h-3 rounded-full bg-success"></span>
                 <span
-                    class="font-medium text-midnight_text text-sm dark:text-white/50">
-                    Tecnologias
+                    class="font-medium text-midnight_text text-lg dark:text-white/80">
+                    {{ t('services.technologies') }}
                 </span>
             </div>
 
             <div class="grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7 mt-4">
                 <div v-for="(item, index) in Technologies" :key="index"
-                    class="col-span-3 min-w-0 bg-white flex flex-col justify-between items-center text-center py-7 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode "
+                    class="col-span-3 min-w-0 bg-white flex flex-col justify-between items-center text-center py-7 px-7 shadow-service rounded-md gap-8 dark:bg-white/70"
                     data-aos="fade-up" :data-aos-delay="`${index * 200}`" data-aos-duration="1000"
                     data-aos-offset="300"
                 >
-                    <div class="dark:bg-white w-40 h-40 rounded-full flex items-center justify-center">
+                    <div class="w-40 h-40 rounded-full flex items-center justify-center">
                         <img :src="item.icon" alt="Service Box" class="w-40 h-40 bg-no-repeat inline-block bg-contain" />
                     </div>
                     <h3 class="max-w-44 mx-auto text-2xl font-bold dark:text-white">
@@ -56,24 +59,24 @@ const { t } = useI18n();
             >
                 <span class="w-3 h-3 rounded-full bg-success"></span>
                 <span
-                    class="font-medium text-midnight_text text-sm dark:text-white/50">
+                    class="font-medium text-midnight_text text-lg dark:text-white/80">
                     {{ t('services.cta') }}
                 </span>
             </div>
 
             <div class="grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7 mt-4">
-                <div v-for="(item, index) in Servicebox" :key="index"
-                    class="col-span-4 min-w-0 bg-white flex flex-col justify-between items-center text-center py-14 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode "
+                <div v-for="(item, index) in companiesList" :key="index"
+                    class="col-span-4 min-w-0 bg-white flex flex-col justify-between items-center text-center py-14 px-7 shadow-service rounded-md gap-8 dark:bg-white/60"
                     data-aos="fade-up" :data-aos-delay="`${index * 200}`" data-aos-duration="1000"
                     data-aos-offset="300"
                 >
-                    <div class="dark:bg-white w-60 h-60 rounded-full flex items-center justify-center">
-                        <img :src="item.icon" alt="Service Box" class="w-40 h-40 bg-no-repeat inline-block bg-contain" />
+                    <div class="w-60 h-60 rounded-full flex items-center justify-center">
+                        <img :src="item.logo" alt="Service Box" class="w-40 h-40 bg-no-repeat inline-block bg-contain" />
                     </div>
                     <h3 class="max-w-44 mx-auto text-2xl font-bold dark:text-white">
-                        {{ item.title }}
+                        {{ item.name }}
                     </h3>
-                    <p class="dark:text-white/50 text-base font-normal">
+                    <p class="dark:text-white text-base font-normal">
                         {{ item.description }}
                     </p>
                 </div>

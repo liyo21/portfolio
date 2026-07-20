@@ -4,6 +4,8 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
 import AppLogo from './AppLogo.vue'
+import { useLanguage } from '@/composables/useLanguage'
+const { locale, languageLabel, toggleLanguage } = useLanguage()
 
 const route = useRoute()
 const { toggleTheme } = useTheme()
@@ -47,6 +49,17 @@ const isHome = computed(() => route.path === '/')
             <AppLogo />
 
             <div class="flex items-center gap-4">
+                <span class="text-primary dark:text-white">{{ languageLabel }}</span>
+                <label class="relative flex justify-between items-center group p-2 text-xl">
+                    <input
+                        type="checkbox"
+                        class="absolute left-1/2 -translate-x-1/2 w-12 h-12 peer appearance-none rounded-md"
+                        :checked="locale === 'en'"
+                        :aria-label="locale === 'es' ? 'Cambiar idioma a inglés' : 'Change language to Spanish'"
+                        @change="toggleLanguage"
+                    />
+                    <span class="w-12 h-6 flex items-center flex-shrink-0 p-1 bg-gray-300 rounded-full duration-300 ease-in-out peer-checked:bg-green-400 after:w-5 after:h-5 after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-6 group-hover:after:translate-x-1"></span>
+                </label>
                 <!-- Theme Toggle -->
                 <button aria-label="Toggle theme"
                     class="flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white"

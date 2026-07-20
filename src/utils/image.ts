@@ -10,5 +10,8 @@ export const getImgPath = (path: string): string => {
     return path
   }
 
-  return `${basePath}${path}`
+  const normalizedBasePath = basePath.replace(/\/$/, '')
+  const normalizedPath = path.replace(/^\//, '')
+
+  return `${normalizedBasePath}/${normalizedPath}`
 }
