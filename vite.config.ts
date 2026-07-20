@@ -38,7 +38,7 @@ const projectMarkdownPlugin = (): Plugin => ({
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [projectMarkdownPlugin(), vue(), tailwindcss()],
-  base: "/portfolio/",
+  base: "/",
   resolve: {
     alias: {
       "@": "/src",
