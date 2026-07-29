@@ -63,7 +63,7 @@ const handleDownloadClick = () => {
                 </div>
 
                 <div class="flex w-full flex-col gap-3 sm:flex-row">
-                    <a href="#portfolio"
+                    <a href="#projects"
                         class="inline-flex w-full items-center justify-center rounded-md bg-primary px-8 py-3 font-semibold text-white transition duration-300 hover:bg-dark_border sm:w-auto">
                         {{ t('hero.buttonPrimary') }}
                     </a>
